@@ -167,48 +167,10 @@ static CGFloat  const yAxisLineWidth        = 1;
 - (void)setPointArray:(NSArray *)pointArray {
     _pointArray = pointArray;
     
-    [self setNeedsLayout];
+    [self setNeedsDisplay];
+     [self drawLine];
     
-    self.lineBezierPath = [UIBezierPath bezierPath];
-    
-    
-    [self.lineBezierPath moveToPoint:CGPointMake(YAxisLeftDistant, self.bounds.size.height - XAxisBottomDistant)];
-    CGFloat xcolum = (self.bounds.size.width - YAxisLeftDistant - YAxisRightDistant)/self.xAxisArray.count;
-    for (int i = 0; i < self.pointArray.count; i++) {
-        NSInteger number  =[self.pointArray[i] integerValue];
-        [self.lineBezierPath addLineToPoint:CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant)];
-        @autoreleasepool {
-            PotView *pot = [[PotView alloc] init];
-            pot.frame = CGRectMake(0, 0, 10, 10);
-            pot.layer.cornerRadius = 5;
-            pot.point = number;
-            pot.center = CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant);
-            pot.backgroundColor = [UIColor greenColor];
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(potViewGes:)];
-            [pot addGestureRecognizer:tap];
-            [self addSubview:pot];
-
-        }
-        
-        
-    }
-    
-    
-    
-    self.lineLayer.path = self.lineBezierPath.CGPath;
-    self.lineLayer.strokeStart = 0 ;
-    self.lineLayer.strokeEnd = 0;
-    
-    self.gradientLayer.mask = self.lineLayer;
-    [self.lineLayer addAnimation:[self creatAnimation] forKey:@"path"];
-    
-    UIBezierPath *fillPath = [self.lineBezierPath copy];
-    
-    [fillPath addLineToPoint:CGPointMake(self.pointArray.count*xcolum + YAxisLeftDistant, self.bounds.size.height - XAxisBottomDistant )];
-    
-    self.fillShapeLayer.path = fillPath.CGPath;
-    
-    self.fillGradientLayer.mask = self.fillShapeLayer;
+   
 }
 
 - (void)setLineWidth:(CGFloat)lineWidth {
@@ -297,12 +259,55 @@ static CGFloat  const yAxisLineWidth        = 1;
 
 }
 
+
+- (void)drawLine {
+    self.lineBezierPath = [UIBezierPath bezierPath];
+    
+    
+    [self.lineBezierPath moveToPoint:CGPointMake(YAxisLeftDistant, self.bounds.size.height - XAxisBottomDistant)];
+    CGFloat xcolum = (self.bounds.size.width - YAxisLeftDistant - YAxisRightDistant)/self.xAxisArray.count;
+    for (int i = 0; i < self.pointArray.count; i++) {
+        NSInteger number  =[self.pointArray[i] integerValue];
+        [self.lineBezierPath addLineToPoint:CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant)];
+        @autoreleasepool {
+            PotView *pot = [[PotView alloc] init];
+            pot.frame = CGRectMake(0, 0, 10, 10);
+            pot.layer.cornerRadius = 5;
+            pot.point = number;
+            pot.center = CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant);
+            pot.backgroundColor = [UIColor greenColor];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(potViewGes:)];
+            [pot addGestureRecognizer:tap];
+            [self addSubview:pot];
+            
+        }
+        
+        
+    }
+    
+    self.lineLayer.path = self.lineBezierPath.CGPath;
+    self.lineLayer.strokeStart = 0 ;
+    self.lineLayer.strokeEnd = 0;
+    
+    self.gradientLayer.mask = self.lineLayer;
+    [self.lineLayer addAnimation:[self creatAnimation] forKey:@"path"];
+    
+    UIBezierPath *fillPath = [self.lineBezierPath copy];
+    
+    [fillPath addLineToPoint:CGPointMake(self.pointArray.count*xcolum + YAxisLeftDistant, self.bounds.size.height - XAxisBottomDistant )];
+    
+    self.fillShapeLayer.path = fillPath.CGPath;
+    
+    self.fillGradientLayer.mask = self.fillShapeLayer;
+
+}
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     [self drawXAxis:context];
     [self drawYAxis:context];
+   
     
 
     

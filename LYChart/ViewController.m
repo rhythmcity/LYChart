@@ -20,10 +20,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
+   
     chartView = [[LYChartView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height/2)];
     
-    
+    chartView.translatesAutoresizingMaskIntoConstraints = NO;
     
     chartView.xAxisArray = @[@2001,@2002,@2003,@2004,@2005,@2006,@2007];
     
@@ -35,6 +35,10 @@
     chartView.lineColor = [UIColor redColor];
     chartView.lineWidth = 2;
     [self.view addSubview:chartView];
+    
+//    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[chartView]-|" options:0 metrics:nil views:@{@"chartView" : chartView}]];
+//    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[chartView]-|" options:0 metrics:nil views:@{@"chartView" : chartView}]];
+    
     
     
 //    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
