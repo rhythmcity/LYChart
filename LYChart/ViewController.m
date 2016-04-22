@@ -19,7 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
     chartView = [[LYChartView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height/2)];
+    
+    
     
     chartView.xAxisArray = @[@2001,@2002,@2003,@2004,@2005,@2006,@2007];
     

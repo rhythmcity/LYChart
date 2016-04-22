@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BADA35001CCA0EB600B784A4 /* PotView.m in Sources */ = {isa = PBXBuildFile; fileRef = BADA34FF1CCA0EB600B784A4 /* PotView.m */; };
 		BADC82071CC9BEBE00B49452 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BADC82061CC9BEBE00B49452 /* main.m */; };
 		BADC820A1CC9BEBE00B49452 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BADC82091CC9BEBE00B49452 /* AppDelegate.m */; };
 		BADC820D1CC9BEBE00B49452 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BADC820C1CC9BEBE00B49452 /* ViewController.m */; };
@@ -36,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BADA34FE1CCA0EB600B784A4 /* PotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PotView.h; sourceTree = "<group>"; };
+		BADA34FF1CCA0EB600B784A4 /* PotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PotView.m; sourceTree = "<group>"; };
 		BADC82021CC9BEBE00B49452 /* LYChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BADC82061CC9BEBE00B49452 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BADC82081CC9BEBE00B49452 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,6 +113,8 @@
 				BADC820C1CC9BEBE00B49452 /* ViewController.m */,
 				BADC82381CC9BF3C00B49452 /* LYChartView.h */,
 				BADC82391CC9BF3C00B49452 /* LYChartView.m */,
+				BADA34FE1CCA0EB600B784A4 /* PotView.h */,
+				BADA34FF1CCA0EB600B784A4 /* PotView.m */,
 				BADC820E1CC9BEBE00B49452 /* Main.storyboard */,
 				BADC82111CC9BEBE00B49452 /* Assets.xcassets */,
 				BADC82131CC9BEBE00B49452 /* LaunchScreen.storyboard */,
@@ -280,6 +285,7 @@
 			files = (
 				BADC820D1CC9BEBE00B49452 /* ViewController.m in Sources */,
 				BADC820A1CC9BEBE00B49452 /* AppDelegate.m in Sources */,
+				BADA35001CCA0EB600B784A4 /* PotView.m in Sources */,
 				BADC823A1CC9BF3C00B49452 /* LYChartView.m in Sources */,
 				BADC82071CC9BEBE00B49452 /* main.m in Sources */,
 			);
@@ -507,6 +513,7 @@
 				BADC82311CC9BEBE00B49452 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BADC82321CC9BEBE00B49452 /* Build configuration list for PBXNativeTarget "LYChartTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +522,7 @@
 				BADC82341CC9BEBE00B49452 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BADC82351CC9BEBE00B49452 /* Build configuration list for PBXNativeTarget "LYChartUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +531,7 @@
 				BADC82371CC9BEBE00B49452 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

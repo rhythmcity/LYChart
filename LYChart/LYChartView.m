@@ -7,7 +7,7 @@
 //
 
 #import "LYChartView.h"
-
+#import "PotView.h"
 
 static CGFloat  const YAxisLeftDistant      = 30;
 static CGFloat  const XAxisBottomDistant    = 20;
@@ -123,7 +123,13 @@ static CGFloat  const yAxisLineWidth        = 1;
 - (void)setYAxisArray:(NSArray *)yAxisArray {
     _yAxisArray = yAxisArray;
     
-    self.maxYValue = [[_yAxisArray lastObject] integerValue];
+    
+  NSArray *array =  [_yAxisArray sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+      
+       return   [obj1 integerValue] > [obj2 integerValue];
+      
+   }];
+    self.maxYValue = [[array lastObject] integerValue];
     [self setNeedsDisplay];
 }
 
@@ -131,6 +137,31 @@ static CGFloat  const yAxisLineWidth        = 1;
     _xAxisArray = xAxisArray;
     [self setNeedsDisplay];
     
+}
+- (void)menu {
+
+
+}
+
+
+
+
+- (void)potViewGes:(UITapGestureRecognizer *)tap {
+
+    PotView *pot = (PotView *)tap.view;
+    [pot becomeFirstResponder];
+    
+    UIMenuController *menu  =  [UIMenuController sharedMenuController];
+    
+    UIMenuItem *item = [[UIMenuItem alloc] initWithTitle:[NSString stringWithFormat:@"%ld",pot.point] action:@selector(menu)];
+    menu.menuItems = [NSArray arrayWithObjects:item, nil];
+    [menu setTargetRect:pot.frame inView:pot.superview];
+    menu.arrowDirection = UIMenuControllerArrowDefault;
+    
+    
+    [menu setMenuVisible:YES animated:YES];
+    
+
 }
 
 - (void)setPointArray:(NSArray *)pointArray {
@@ -146,13 +177,18 @@ static CGFloat  const yAxisLineWidth        = 1;
     for (int i = 0; i < self.pointArray.count; i++) {
         NSInteger number  =[self.pointArray[i] integerValue];
         [self.lineBezierPath addLineToPoint:CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant)];
-        
-        CALayer *layer = [CALayer layer];
-        layer.frame = CGRectMake(0, 0, 10, 10);
-        layer.cornerRadius = 5;
-        layer.position = CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant);
-        layer.backgroundColor = [UIColor greenColor].CGColor;
-        [self.layer addSublayer:layer];
+        @autoreleasepool {
+            PotView *pot = [[PotView alloc] init];
+            pot.frame = CGRectMake(0, 0, 10, 10);
+            pot.layer.cornerRadius = 5;
+            pot.point = number;
+            pot.center = CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant);
+            pot.backgroundColor = [UIColor greenColor];
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(potViewGes:)];
+            [pot addGestureRecognizer:tap];
+            [self addSubview:pot];
+
+        }
         
         
     }
