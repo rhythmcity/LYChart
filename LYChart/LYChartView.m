@@ -142,15 +142,15 @@ static CGFloat  const yAxisLineWidth        = 1;
     
     
     [self.lineBezierPath moveToPoint:CGPointMake(YAxisLeftDistant, self.bounds.size.height - XAxisBottomDistant)];
-    CGFloat xcolum = (self.bounds.size.width - 2*YAxisLeftDistant)/self.xAxisArray.count;
+    CGFloat xcolum = (self.bounds.size.width - YAxisLeftDistant - YAxisRightDistant)/self.xAxisArray.count;
     for (int i = 0; i < self.pointArray.count; i++) {
         NSInteger number  =[self.pointArray[i] integerValue];
-        [self.lineBezierPath addLineToPoint:CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant))];
+        [self.lineBezierPath addLineToPoint:CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant)];
         
         CALayer *layer = [CALayer layer];
         layer.frame = CGRectMake(0, 0, 10, 10);
         layer.cornerRadius = 5;
-        layer.position = CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant));
+        layer.position = CGPointMake((i+1) *xcolum + YAxisLeftDistant , (1 - number/self.maxYValue) *(self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant) + XAxisTopDistant);
         layer.backgroundColor = [UIColor greenColor].CGColor;
         [self.layer addSublayer:layer];
         
@@ -214,7 +214,7 @@ static CGFloat  const yAxisLineWidth        = 1;
     CGContextAddLineToPoint(context, self.bounds.size.width- YAxisRightDistant , self.bounds.size.height - XAxisBottomDistant);
     CGContextStrokePath(context);
 
-    CGFloat xcolum = (self.bounds.size.width - 2*YAxisLeftDistant)/self.xAxisArray.count;
+    CGFloat xcolum = (self.bounds.size.width - YAxisLeftDistant - YAxisRightDistant)/self.xAxisArray.count;
     
     CGFloat statX = YAxisLeftDistant;
     
@@ -242,7 +242,7 @@ static CGFloat  const yAxisLineWidth        = 1;
     CGContextAddLineToPoint(context, YAxisLeftDistant, XAxisTopDistant);
     CGContextStrokePath(context);
     
-    CGFloat ycolum = (self.bounds.size.height - 2*XAxisBottomDistant)/self.yAxisArray.count;
+    CGFloat ycolum = (self.bounds.size.height - XAxisBottomDistant - XAxisTopDistant)/self.yAxisArray.count;
     
     CGFloat statY = self.bounds.size.height - XAxisBottomDistant;
 
