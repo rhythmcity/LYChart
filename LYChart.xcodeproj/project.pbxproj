@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA13953B218D8AB7000D4F01 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA13953A218D8AB7000D4F01 /* FirstViewController.m */; };
 		BADA35001CCA0EB600B784A4 /* PotView.m in Sources */ = {isa = PBXBuildFile; fileRef = BADA34FF1CCA0EB600B784A4 /* PotView.m */; };
 		BADC82071CC9BEBE00B49452 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BADC82061CC9BEBE00B49452 /* main.m */; };
 		BADC820A1CC9BEBE00B49452 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BADC82091CC9BEBE00B49452 /* AppDelegate.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA139539218D8AB7000D4F01 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		BA13953A218D8AB7000D4F01 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		BADA34FE1CCA0EB600B784A4 /* PotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PotView.h; sourceTree = "<group>"; };
 		BADA34FF1CCA0EB600B784A4 /* PotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PotView.m; sourceTree = "<group>"; };
 		BADC82021CC9BEBE00B49452 /* LYChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +114,8 @@
 				BADC82091CC9BEBE00B49452 /* AppDelegate.m */,
 				BADC820B1CC9BEBE00B49452 /* ViewController.h */,
 				BADC820C1CC9BEBE00B49452 /* ViewController.m */,
+				BA139539218D8AB7000D4F01 /* FirstViewController.h */,
+				BA13953A218D8AB7000D4F01 /* FirstViewController.m */,
 				BADC82381CC9BF3C00B49452 /* LYChartView.h */,
 				BADC82391CC9BF3C00B49452 /* LYChartView.m */,
 				BADA34FE1CCA0EB600B784A4 /* PotView.h */,
@@ -284,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BADC820D1CC9BEBE00B49452 /* ViewController.m in Sources */,
+				BA13953B218D8AB7000D4F01 /* FirstViewController.m in Sources */,
 				BADC820A1CC9BEBE00B49452 /* AppDelegate.m in Sources */,
 				BADA35001CCA0EB600B784A4 /* PotView.m in Sources */,
 				BADC823A1CC9BF3C00B49452 /* LYChartView.m in Sources */,

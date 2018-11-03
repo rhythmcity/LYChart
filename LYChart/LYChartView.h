@@ -11,10 +11,16 @@
 @interface LYChartView : UIView
 @property (nonatomic, strong)NSArray *pointArray;
 @property (nonatomic, strong)NSArray<NSNumber *> *yAxisArray;
-@property (nonatomic, strong)NSArray<NSNumber *> *xAxisArray;
+@property (nonatomic, strong)NSArray<NSString *> *xAxisArray;
 @property (nonatomic, strong)UIColor *xAxisLineColor;
 @property (nonatomic, strong)UIColor *yAxisLineColor;
 @property (nonatomic, strong)UIColor *lineColor;
 @property (nonatomic, strong)UIColor *fillColor;
 @property (nonatomic, assign)CGFloat lineWidth;
+
+@property (nonatomic, assign) BOOL smoothCurve;
+
+@property (nonatomic, assign) BOOL showMask;
+
+@property (nonatomic, assign) BOOL animation;
 @end
